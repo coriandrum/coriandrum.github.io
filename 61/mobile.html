@@ -23,13 +23,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1000;
         }
         .magazine-viewport .next-button,
         .magazine-viewport .previous-button{
             border-radius: 0;
             background-image: url(./assets/pics/arrow-mobile.png);
             background-repeat: no-repeat;
+            z-index: 1000;
         }
         .magazine-viewport .next-button{
             background-position: -38px 284px;
@@ -44,6 +44,12 @@
             border-radius: 0;
             background-image: url(./assets/pics/arrow-mobile.png);
             background-color: transparent;
+        }
+        .magazine .region {
+            background: rgba(255,255,255,0.0);
+        }
+        .magazine .region:hover{
+            background: rgba(90,215,133,0.2);
         }
     </style>
 </head>
@@ -91,7 +97,7 @@
                 // Elevation from the edge of the flipbook when turning a page
                 elevation: 100,
                 // The number of pages
-                pages: 28,
+                pages: 41,
                 // Events
                 when: {
                     turning: function(event, page, view) {

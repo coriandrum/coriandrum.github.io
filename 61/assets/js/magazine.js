@@ -30,10 +30,10 @@ function loadPage(page, pageElement) {
     // Remove the loader indicator
     pageElement.find('.loader').remove();
   });
+  loadRegions(page , pageElement);
   page = padLeft(page-1, 3);
   // Load the page
   img.attr('src', 'assets/pages/normal/' + page + '.jpg');
-  //loadRegions(page, pageElement);
 }
 
 // Zoom in / Zoom out
@@ -57,12 +57,73 @@ function zoomTo(event) {
 // Load regions
 
 function loadRegions(page, element) {
-  $.getJSON('pages/' + page + '-regions.json').
-  done(function(data) {
-    $.each(data, function(key, region) {
-      addRegion(region, element);
-    });
-  });
+    var cat = 3;
+    if(page == cat){
+      if($('.magazine').turn('display')==='double'){
+      var data = [{
+          "x":90,
+          "y":270,
+          "width":320,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 4 }
+          },{
+          "x":90,
+          "y":320,
+          "width":320,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 13 }
+          },{
+          "x":90,
+          "y":370,
+          "width":320,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 23 }
+          },{
+          "x":90,
+          "y":420,
+          "width":320,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 28 }
+      }];
+    } else {
+      var data = [{
+          "x":45,
+          "y":270,
+          "width":160,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 4 }
+          },{
+          "x":45,
+          "y":320,
+          "width":160,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 13 }
+          },{
+          "x":45,
+          "y":370,
+          "width":160,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 23 }
+          },{
+          "x":45,
+          "y":420,
+          "width":160,
+          "height":40,
+          "class":"to-page",
+          "data": { "page": 28 }
+      }];
+    }
+      $.each(data, function(key, region) {
+        addRegion(region, element);
+      });
+    }
 }
 
 // Add region

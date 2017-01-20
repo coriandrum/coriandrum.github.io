@@ -20,6 +20,12 @@
         .mobile{
             display: none;
         }
+        .magazine .region {
+            background: rgba(255,255,255,0.0);
+        }
+        .magazine .region:hover{
+            background: rgba(90,215,133,0.2);
+        }
         @media (max-width: 767px) {
             .mobile{
                 display: block;
@@ -37,7 +43,40 @@
                 border-radius: 30px;
             }
         }
-        
+        #b-ctrl{
+            text-align: center;
+            padding-top: 15px;
+        }
+        #b-ctrl>a{
+            text-decoration: none;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto 5px;
+            vertical-align: bottom;
+        }
+        #b-ctrl>a.next{
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 0 10px 15px;
+            border-color: transparent transparent transparent #ccc;
+        }
+        #b-ctrl>a.next:hover{
+            border-color: transparent transparent transparent #000;
+        }
+        #b-ctrl>a.prev{
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 15px 10px 0;
+            border-color: transparent #ccc transparent transparent;
+        }
+        #b-ctrl>a.prev:hover{
+            border-color: transparent #000 transparent transparent ;
+        }
+        .turnjs-slider{
+            margin-top: 15px;
+        }
     </style>
 </head>
 
@@ -55,6 +94,16 @@
             </div>
             <div class="mobile"><a href="./mobile.html">行動版</a></div>
             <div class="bottom">
+                <div id="b-ctrl">
+                    <!--a class="prev-first" onclick="$('.magazine').turn('page', 1)">第一頁</a-->
+                    <a class="prev" onclick="$('.magazine').turn('previous')"></a>
+                    <span class="now"></span>
+                    <span >/</span>
+                    <span class="max"></span>
+                    <a class="next" onclick="$('.magazine').turn('next')"></a>
+                    <!--a class="prev-last" onclick="$('.magazine').turn('page', 41)">最後一頁</a-->
+
+                </div>
                 <div id="slider-bar" class="turnjs-slider">
                     <div id="slider"></div>
                 </div>
@@ -86,7 +135,7 @@
                 // Elevation from the edge of the flipbook when turning a page
                 elevation: 100,
                 // The number of pages
-                pages: 28,
+                pages: 41,
                 // Events
                 when: {
                     turning: function(event, page, view) {
@@ -97,6 +146,7 @@
                         Hash.go('page/' + page).update();
                         // Show and hide navigation buttons
                         disableControls(page);
+                        $('#b-ctrl>.now').text(page);
                     },
                     turned: function(event, page, view) {
                         disableControls(page);
@@ -105,6 +155,7 @@
                         if (page == 1) {
                             $(this).turn('peel', 'br');
                         }
+                        $('#b-ctrl>.now').text(page);
                     },
                     missing: function(event, pages) {
                         // Add pages that aren't in the magazine
@@ -113,6 +164,7 @@
                     }
                 }
             });
+            $('#b-ctrl>.max').text(flipbook.turn('pages'));
 
             // Zoom.js
             $('.magazine-viewport').zoom({
@@ -203,11 +255,13 @@
                     if (page !== undefined) {
                         if ($('.magazine').turn('is'))
                             $('.magazine').turn('page', page);
+                            $('#b-ctrl>.now').text(page);
                     }
                 },
                 nop: function(path) {
                     if ($('.magazine').turn('is'))
                         $('.magazine').turn('page', 1);
+                        $('#b-ctrl>.now').text(page);
                 }
             });
 
@@ -249,7 +303,6 @@
             }).click(function() {
                 $('.magazine').turn('previous');
             });
-
 
             // Slider
             $("#slider").slider({
