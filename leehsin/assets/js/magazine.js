@@ -52,7 +52,7 @@ function zoomTo(event) {
   }, 1);
 }
 
-var regionDataNormal = [
+var regionDataNormal_3 = [
   //mainTitle
   { "x": 24, "y": 25, "width": 335, "height": 16, "class":"to-page", "data": { "page": 4 } },
   { "x": 24, "y": 78, "width": 335, "height": 16, "class":"to-page", "data": { "page": 6 } },
@@ -70,7 +70,6 @@ var regionDataNormal = [
   { "x": 44, "y":400, "width": 290, "height": 13, "class":"to-page", "data": { "page": 16 } },
   { "x": 44, "y":417, "width": 290, "height": 13, "class":"to-page", "data": { "page": 18 } },
   { "x": 44, "y":434, "width": 290, "height": 13, "class":"to-page", "data": { "page": 19 } },
-  
   { "x": 44, "y":474, "width": 290, "height": 13, "class":"to-page", "data": { "page": 20 } },
   { "x": 44, "y":491, "width": 290, "height": 13, "class":"to-page", "data": { "page": 20 } },
   { "x": 44, "y":507, "width": 290, "height": 13, "class":"to-page", "data": { "page": 21 } },
@@ -78,7 +77,6 @@ var regionDataNormal = [
   { "x": 44, "y":541, "width": 290, "height": 13, "class":"to-page", "data": { "page": 22 } },
   { "x": 44, "y":573, "width": 290, "height": 13, "class":"to-page", "data": { "page": 24 } },
   { "x": 44, "y":590, "width": 290, "height": 13, "class":"to-page", "data": { "page": 24 } },
-  
   { "x": 44, "y":630, "width": 290, "height": 13, "class":"to-page", "data": { "page": 25 } },
   //smlTitle
   { "x": 44, "y":200, "width": 290, "height": 13, "class":"to-page", "data": { "page": 11 } },
@@ -91,30 +89,90 @@ var regionDataNormal = [
   { "x": 44, "y":333, "width": 290, "height": 13, "class":"to-page", "data": { "page": 14 } },
   { "x": 44, "y":350, "width": 290, "height": 13, "class":"to-page", "data": { "page": 14 } },
   { "x": 44, "y":367, "width": 290, "height": 13, "class":"to-page", "data": { "page": 15 } }
-
-
 ]
 
+var regionDataNormal_7 = [
+  { "x": 67, "y": 87, "width": 198, "height": 12, "class":"link", "data": { "url": "http://www.ettoday.net/news/20151005/575032.htm" } },
+  { "x": 67, "y":102, "width": 258, "height": 12, "class":"link", "data": { "url": "http://www.chinatimes.com/realtimenews/20151005002188-260407" } },
+  { "x": 67, "y":119, "width": 283, "height": 12, "class":"link", "data": { "url": "http://www.appledaily.com.tw/realtimenews/article/new/20151005/704987/" } },
+  { "x": 67, "y":135, "width": 263, "height": 12, "class":"link", "data": { "url": "https://www.facebook.com/brandnewlee/videos/1658648467709702/" } }
+]
+
+var regionDataNormal_8 = [
+  { "x": 182, "y": 646, "width": 192, "height": 12, "class":"link", "data": { "url": "https://www.youtube.com/watch?v=D1xvpdpW-ug" } }
+]
+
+var regionDataNormal_9 = [
+  { "x": 68, "y": 357, "width": 281, "height": 12, "class":"link", "data": { "url": "http://www.appledaily.com.tw/realtimenews/article/new/20141207/520060/" } }
+]
+
+var regionDataNormal_17 = [
+  { "x": 68, "y": 205, "width": 281, "height": 12, "class":"link", "data": { "url": "http://www.appledaily.com.tw/realtimenews/article/new/20160219/799262/" } },
+  { "x": 27, "y": 237, "width": 325, "height": 12, "class":"link", "data": { "url": "http://www.ettoday.net/news/20160222/651384.htm?feature=todaysforum&tab_id=268" } }
+]
+
+var regionDataNormal_18 = [
+  { "x": 184, "y": 165, "width": 281, "height": 12, "class":"link", "data": { "url": "http://www.appledaily.com.tw/realtimenews/article/new/20160222/800667/" } }
+]
+
+var regionDataNormal_19 = [
+  { "x": 68, "y":  52, "width": 152, "height": 12, "class":"link", "data": { "url": "http://news.tvbs.com.tw/politics/642524" } },
+  { "x": 68, "y":  68, "width": 190, "height": 12, "class":"link", "data": { "url": "https://www.youtube.com/watch?v=AdHepxud_as" } },
+  { "x": 68, "y": 411, "width": 199, "height": 12, "class":"link", "data": { "url": "http://www.ettoday.net/news/20160326/670091.htm" } }
+]
+
+var regionDataNormal_24 = [
+  { "x":182, "y":  27, "width": 180, "height": 12, "class":"link", "data": { "url": "http://newtalk.tw/news/view/2016-02-17/70244" } },
+  { "x":182, "y":  43, "width": 138, "height": 12, "class":"link", "data": { "url": "https://video.udn.com/news/442137" } },
+  { "x":182, "y":  59, "width": 255, "height": 12, "class":"link", "data": { "url": "http://www.chinatimes.com/realtimenews/20160305003821-260407" } }
+]
 // Load regions
 
 function loadRegions(page, element) {
     var cat = 3;
-    if(page == cat) {
-      if($('.magazine').turn('display')==='double'){
-        var data = regionDataNormal;
-      } else {
-        var regionDataMobile = regionDataNormal;
-        for (var i = 0; i < regionDataMobile.length; i++) {
-          var item = regionDataNormal[i];
-          item.x = item.x / 2;
-          item.width = item.width / 2;
-        }
-        var data = regionDataMobile;
+    switch(page) {
+      case 3:
+        var regionDataNormal = regionDataNormal_3;
+        break;
+      case 7:
+        var regionDataNormal = regionDataNormal_7;
+        break;
+      case 8:
+        var regionDataNormal = regionDataNormal_8;
+        break;
+      case 9:
+        var regionDataNormal = regionDataNormal_9;
+        break;
+      case 17:
+        var regionDataNormal = regionDataNormal_17;
+        break;
+      case 18:
+        var regionDataNormal = regionDataNormal_18;
+        break;
+      case 19:
+        var regionDataNormal = regionDataNormal_19;
+        break;
+      case 24:
+        var regionDataNormal = regionDataNormal_24;
+        break;
+      default:
+        var regionDataNormal = [];
+        break;
+    }
+    if($('.magazine').turn('display')==='double'){
+      var data = regionDataNormal;
+    } else {
+      var regionDataMobile = regionDataNormal;
+      for (var i = 0; i < regionDataMobile.length; i++) {
+        var item = regionDataNormal[i];
+        item.x = item.x / 2;
+        item.width = item.width / 2;
       }
+      var data = regionDataMobile;
+    }
     $.each(data, function(key, region) {
       addRegion(region, element);
     });
-  }
 }
 
 // Add region
@@ -125,8 +183,8 @@ function addRegion(region, pageElement) {
     pageWidth = options.width / 2,
     pageHeight = options.height;
   reg.css({
-    top: Math.round(region.y / pageHeight * 100) + '%',
-    left: Math.round(region.x / pageWidth * 100) + '%',
+    top: (region.y / pageHeight * 100) + '%',
+    left: (region.x / pageWidth * 100) + '%',
     width: Math.round(region.width / pageWidth * 100) + '%',
     height: Math.round(region.height / pageHeight * 100) + '%'
   }).attr('region-data', $.param(region.data || ''));
